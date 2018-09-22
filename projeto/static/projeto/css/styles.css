@@ -1,0 +1,104 @@
+body {
+	background-color: #272727;
+}
+
+.white {
+	color: white;
+}
+
+.white:hover{
+	color: white;
+}
+
+#botaoMover {
+	margin-top: 50px;	
+}
+
+.pagina_video{
+	margin-top: 100px;
+}
+
+.selecao_videos img{
+	height: 340px;
+}
+
+.login {
+	margin-top: 20px;
+	background-color: #f0efef;
+	padding: 30px 50px 30px 50px;
+}
+
+.carousel-caption{
+	top:37%;
+	transform: translateY(-40%);
+	transform: translateX(-4%);
+}
+
+.carousel-caption h1{
+	font-size: 100px;
+}
+
+.carousel-caption a{
+	color: white;
+}
+
+.carousel-caption a:hover{
+	color: #c9c9c9;
+}
+
+.carousel img {
+	height: 60vh;
+}
+
+.area_escolha h3 {
+	color: #fff;
+}
+
+.rolagem {
+    max-height:300px;
+    overflow-y:auto;  
+}
+
+@media(max-width: 576px){
+	.carousel-caption{
+		top:10%;
+		transform: translateY(-40%);
+		transform: translateX(2%);
+	}
+
+	.carousel-caption h1{
+		font-size: 80px;
+	}
+
+	.carousel img {
+		height: 40vh;
+	}
+
+	.selecao_videos img{
+		height: 200px;
+	}
+
+	.catalogo-container {
+		margin-top: 100px;
+	}
+}
+
+.footer{
+	background-color: #1e1e1e;
+	color: white;
+	padding: 20px 0;
+}
+
+.footer a{
+	color:#bababa;
+}
+
+.footer-componentes {
+	margin-top: 105px;
+}
+
+@media(min-width: 576px)  {
+	.catalogo-container {
+		margin-top: 120px;
+	}
+}

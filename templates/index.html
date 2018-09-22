@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block style %}
+    .jumbotron{
+	    background-image: linear-gradient(to bottom, rgba(0,0,0,1.2) 0%,rgba(0,0,0,0.6) 100%), url({% static 'projeto/images/fundo.jpeg' %});
+	    color: white;
+    }
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="{% url 'pagina_inicial' %}">Meu Canal</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+			</ul>
+			  <a href="{% url 'login:pagina_login' %}" class="btn btn-info my-2 my-sm-0" type="button">Entrar</a>
+			</div>
+		</div>
+	</nav>
+{%  endblock %}
+
+{% block conteudo %}
+    <div class="container mb-5">
+
+		<div class="jumbotron">
+		  <h1 class="display-4">Assista os melhores conteúdos com facilidade.</h1>
+		  <p class="lead">Assista onde quiser. A qualquer hora.</p>
+		  <hr class="my-4">
+		  <p></p>
+		  <p class="lead">
+		  	<div class="d-none d-md-block">
+			  	<a class="btn btn-info btn-lg" href="#vantagens" type="button">Vantagens de assinar</a>
+			    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal">Assine Já</button>
+			</div>
+			<div class="d-block d-sm-none">
+				<a class="btn btn-info btn-block btn-lg" href="#vantagens" type="button">Vantagens de assinar</a>
+			    <button type="button" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target="#modal">Assine Já</button>
+			</div>
+		  </p>
+		</div>
+
+		<div class="row mb-5 white">
+			<div class="col-md-4 mb-2">
+		      	<img class="rounded-circle float-right" src="{% static 'projeto/images/user_icon.png' %}" alt="Generic placeholder image" width="100" height="64">
+				<blockquote class="blockquote text-right">
+				  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+				  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+				</blockquote>
+			</div>
+			<div class="col-md-4 mb-2">
+		      	<img class="rounded-circle float-right" src="{% static 'projeto/images/user_icon.png' %}" alt="Generic placeholder image" width="100" height="64">
+				<blockquote class="blockquote text-right">
+				  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+				  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+				</blockquote>
+			</div>
+			<div class="col-md-4 mb-2">
+				<img class="rounded-circle float-right" src="{% static 'projeto/images/user_icon.png' %}" alt="Generic placeholder image" width="100" height="64">
+				<blockquote class="blockquote text-right">
+				  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+				  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+				</blockquote>
+			</div>
+		</div>
+
+		<div class="row" id="vantagens">
+		  <div class="col-md-4">
+		    <div class="list-group" id="list-tab" role="tablist">
+		      <a class="list-group-item list-group-item-action list-group-item-secondary active text-center" id="list-home-list" data-toggle="list" href="#list-cancelamento" role="tab" aria-controls="home"><h1 class="oi oi-account-logout"></h1><br>Cancele a hora que quiser</a>
+		      <a class="list-group-item list-group-item-action list-group-item-secondary text-center" id="list-profile-list" data-toggle="list" href="#list-comente" role="tab" aria-controls="profile"><h1 class="oi oi-comment-square"></h1><br>Comente com outras pessoas sobre o que assistiu</a>
+		      <a class="list-group-item list-group-item-action list-group-item-secondary text-center" id="list-messages-list" data-toggle="list" href="#list-plano" role="tab" aria-controls="messages"><h1 class="oi oi-dollar"></h1><br>Escolha seu plano</a>
+		    </div>
+		  </div>
+		  <div class="col-md-8 mt-3 white">
+		    <div class="tab-content" id="nav-tabContent">
+		      <div class="tab-pane fade show active" id="list-cancelamento" role="tabpanel" aria-labelledby="list-home-list">
+	      			<img src="{% static 'projeto/images/filmes.png' %}" class="img-fluid float-right" width="50%">
+
+	      			<h5>Se você decidir não continuar a assinatura, tudo bem. Sem compromisso. Cancele online quando quiser.</h5>
+
+	      			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal">Assista um mês grátis</button>
+		      </div>
+		      <div class="tab-pane fade mt-5" id="list-comente" role="tabpanel" aria-labelledby="list-profile-list">
+      			<img src="{% static 'projeto/images/comentarios.png' %}" class="img-fluid float-right" width="50%">
+
+      			<h5>Comente com seus amigos sobre cada vídeo sem sair da plataforma.</h5>
+      			<h5>Veja como é fácil a partir da imagem a seguir.</h5>
+
+		      </div>
+		      <div class="tab-pane fade" id="list-plano" role="tabpanel" aria-labelledby="list-messages-list">
+		      	<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col"></th>
+				      <th scope="col">Básico</th>
+				      <th scope="col">Padrão</th>
+				      <th scope="col">Premium</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>Preço Mensal</td>
+				      <td>R$10,90</td>
+				      <td>R$20,90</td>
+				      <td>R$27,90</td>
+				    </tr>
+				    <tr>
+				      <td>Telas simultâneas</td>
+				      <td>2</td>
+				      <td>3</td>
+				      <td>4</td>
+				    </tr>
+				    <tr>
+				      <td>Assista no notebook, TV, smartphone ou tablet</td>
+				      <td><span class="oi oi-check"></span></td>
+				      <td><span class="oi oi-check"></span></td>
+				      <td><span class="oi oi-check"></span></td>
+				    </tr>
+				    <tr>
+				      <td>Filmes e séries ilimitados</td>
+				      <td><span class="oi oi-check"></td>
+				      <td><span class="oi oi-check"></td>
+				      <td><span class="oi oi-check"></td>
+				    </tr>
+				    <tr>
+				      <td>Primeiro mês grátis</td>
+				      <td><span class="oi oi-check"></td>
+				      <td><span class="oi oi-check"></td>
+				      <td><span class="oi oi-check"></td>
+				    </tr>
+				  </tbody>
+				</table>
+
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block modal-content %}
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Realizar Assinatura</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-secondary" role="alert">
+            Lembre-se nós só colocamos as séries e filmes, você ainda tem uma vida social XD
+        </div>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputNome">Nome Completo</label>
+            <input type="text" class="form-control" id="exampleInputNome" aria-describedby="emailHelp" placeholder="Digite seu nome">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputIdade">Idade</label>
+            <input type="number" class="form-control" max="200" id="exampleInputIdade" aria-describedby="emailHelp" placeholder="Digite sua idade">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Senha</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite sua senha">
+          </div>
+          <button type="submit" class="btn btn-success btn-block">Concluir assinatura</button>
+        </form>
+    </div>
+{% endblock %}

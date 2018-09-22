@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'projeto/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'projeto/open-iconic/font/css/open-iconic-bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'projeto/css/styles.css' %}">
+    <title>{% block titulo %}Meu Canal{% endblock %}</title>
+    <style>
+        {% block style %}
+        {% endblock %}
+    </style>
+</head>
+<body>
+    {% block navbar %}
+    {% endblock %}
+
+    {% block conteudo %}
+    {% endblock %}
+
+    <div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<h5>Sobre:</h5>
+					<ul class="list-unstyled">
+						<li><a href="">O que é Meu Canal</a></li>
+						<li><a href="">História</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<h5>Políticas:</h5>
+					<ul class="list-unstyled">
+						<li><a href="">Termos de Contrato</a></li>
+						<li><a href="">Privacidade</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<ul class="list-unstyled">
+						<h5>Nossos planos:</h5>
+						<li><a href="">Plano Básico</a></li>
+						<li><a href="">Plano Padrão</a></li>
+						<li><a href="">Plano Premium</a></li>
+					</ul>
+				</div>
+				<div class="col-md-12 text-center">
+					Todos os Direitos Reservados - Desenvolvimento: <a href="http://www.matheusleal.com.br/" target="_blank"> Matheus Leal</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Modal -->
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+            {% block modal-content %}
+            {% endblock %}
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+    <script src="{% static 'projeto/js/jquery-3.2.1.js' %}"></script>
+    <script src="{% static 'projeto/js/popper.js' %}"></script>
+    <script src="{% static 'projeto/js/bootstrap.js' %}"></script>
+    <script src="{% static 'projeto/js/script.js' %}"></script>
+</body>
+</html>

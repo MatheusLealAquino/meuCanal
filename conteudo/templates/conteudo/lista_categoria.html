@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="{% url 'conteudo:catalogo' %}">Meu Canal</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+				  <li class="nav-item active">
+				    <a class="nav-link" href="{% url 'conteudo:catalogo' %}">Início <span class="sr-only">(current)</span></a>
+				  </li>
+	  			  <li class="nav-item">
+				    <a class="nav-link" href="#">Séries</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="#">Área Kids</a>
+				  </li>
+	  			  <li class="nav-item">
+				    <a class="nav-link" href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">Categorias</a>
+				  </li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0 ml-auto">
+				  <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+				  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+				</form>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          Usuário
+          			      <img class="rounded-circle" src="{% static 'projeto/images/user_male.png' %}" alt="Generic placeholder image" width="55" height="50">
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				          <a class="dropdown-item" href="#">Minha Conta</a>
+				          <a class="dropdown-item" href="#">Minha Lista</a>
+				          <div class="dropdown-divider"></div>
+				          <a class="dropdown-item" href="{% url 'pagina_inicial' %}">Logout</a>
+				        </div>
+			      	</li>
+			  	</ul>
+			</div>
+		</div>
+	</nav>
+{%  endblock %}
+
+{% block conteudo %}
+    	<div class="container catalogo-container">
+            <div class="selecao_videos row text-center">
+                {% for video in videos %}
+                    <div class="col-md-4 mb-2">
+                        <div class="card">
+                            <img class="card-img-top" src="{{video.capa}}" alt="{{ video.nome }}">
+                            <div class="card-body">
+                                <h5 class="card-title" data-toggle="tooltip" data-placement="top" title="{{ video.nome }}">{{ video.nome }}</h5>
+                                <a href="{% url 'conteudo:exibir_video' id=video.id %}" type="button" class="btn btn-info btn-block">Assistir</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="mx-auto">
+                    {% if videos.has_other_pages %}
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination">
+                        {% if videos.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ videos.previous_page_number }}">Anterior</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="">Anterior</a></li>
+                        {% endif %}
+                        {% for i in videos.paginator.page_range %}
+                            {% if videos.number == i %}
+                                <li class="page-item active"><a class="page-link" href="?page={{ videos.number }}">{{ i }} </a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if videos.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ videos.next_page_number }}">Proximo</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="">Proximo</a></li>
+                        {% endif %}
+                      </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+            </div>
+
+	</div>
+{% endblock %}
+
+{% block modal-content %}
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Categorias</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+            {% for categoria in categorias %}
+                <a href="{% url 'conteudo:lista_categoria' id=categoria.id %}" class="list-group-item list-group-item-action">{{ categoria.nome }}</a>
+            {% endfor %}
+        </ul>
+      </div>
+{% endblock %}
